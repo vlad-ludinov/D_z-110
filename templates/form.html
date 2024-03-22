@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма для POST запроса</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #e5e1e1;
+        }
+        .form__container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            padding: 30px;
+            background: #f5f8fa;
+            border: 1px solid #878787;
+            border-radius: 7px;
+        }
+<!--        .form {-->
+<!--            position: relative;-->
+<!--        }-->
+        .form__group {
+            display: flex;
+            position: relative;
+            margin-bottom: 45px;
+        }
+        .form__input {
+            position: absolute;
+<!--            margin-bottom: 20px;-->
+            left: 0px;
+            width: 100%;
+            height: 35px;
+            padding: 10px 10px 0px 3px;
+            box-sizing: border-box;
+            border: 2px solid;
+            border-radius: 3px;
+            background: transparent;
+        }
+        .form__label {
+            font-size: 16px;
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            color: #5c5959;
+            transition: 0.3s;
+        }
+        .form__input:focus + .form__label,
+        .form__input:required:valid + .form__label
+        {
+            font-size: 10px;
+            top: 1px;
+            color: #bfbdbd;
+<!--            display: none;-->
+        }
+        .button__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .form__button {
+            position: absolute;
+            bottom: 12px;
+            color: #395744;
+            width: 160px;
+            padding: 9px;
+            text-align: center;
+            background: #8fd6ff;
+            border-radius: 10px;
+            border: 1px solid;
+        }
+        .form__button:hover {
+            width: 162px;
+            padding: 10px;
+            bottom: 10px;
+            position: absolute;
+            background: #54c7d6;
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="form__container">
+        <form class="form" action="/registration" method="post">
+            {{ form.csrf_token }}
+            <div class="form__group">
+                {{ form.name(class='form__input') }}
+                {{ form.name.label(class='form__label') }}
+            </div>
+            <div class="form__group">
+                {{ form.surname(class='form__input') }}
+                {{ form.surname.label(class='form__label') }}
+            </div>
+            <div class="form__group">
+                {{ form.email(class='form__input') }}
+                {{ form.email.label(class='form__label') }}
+            </div>
+            <div class="form__group">
+                {{ form.password(class='form__input') }}
+                {{ form.password.label(class='form__label') }}
+            </div>
+            <div class="button__container">
+                <input class="form__button" type="submit" value="Зарегистрироваться">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
